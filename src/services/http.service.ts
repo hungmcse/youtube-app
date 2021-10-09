@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {Service} from 'typedi';
 import {API_HOST} from '../environment/environment';
-import {DTO, ResponseDTO} from '../model/dto/base.dto';
+import {DTO, ResponseDTO} from '../shared/dto/base.dto';
 
 // import jwtDecode from 'jwt-decode';
 

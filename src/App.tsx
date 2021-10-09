@@ -3,7 +3,7 @@ import {Spin} from 'antd';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import {PageRoute} from './constants/route';
 import AuthRouter from './components/auth/AuthRouter';
-import {MasterPageLayout} from './layout/masterpage.layout';
+import {MasterPageLayout} from './layout/master-page.layout';
 
 const App = () => {
 	return (
@@ -13,8 +13,6 @@ const App = () => {
 					<Switch>
 						<Route path={PageRoute.Home} exact={true}
 							   component={React.lazy(() => import('./pages/home/home.page'))}/>
-						<Route path={PageRoute.Login} exact={true}
-							   component={React.lazy(() => import('./pages/auth/login/login.page'))}/>
 						<AuthRouter>
 							<Route path={PageRoute.Share}
 								   component={React.lazy(() => import('./pages/share/share.page'))}/>

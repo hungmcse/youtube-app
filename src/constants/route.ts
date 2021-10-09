@@ -1,5 +1,6 @@
 export enum PageRoute {
 	Home = '/',
 	Login = '/login',
-	Share = '/share'
+	Share = '/share',
+	Register = '/register',
 }

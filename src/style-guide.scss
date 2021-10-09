@@ -1,0 +1,42 @@
+$margin-base: 4px;
+$padding-base: 4px;
+$base: 18px;
+$font: 16px;
+// Define default class
+@for $i from 1 through 5 {
+  .p#{$i} {
+    padding: $i * $padding-base !important;
+  }
+  .pr#{$i} {
+    padding-right: $i * $padding-base !important;
+  }
+  .pl#{$i} {
+    padding-left: $i * $padding-base !important;
+  }
+  .pt#{$i} {
+    padding-top: $i * $padding-base !important;
+  }
+  .pb#{$i} {
+    padding-bottom: $i * $padding-base !important;
+  }
+
+  .m#{$i} {
+    margin: $i * $padding-base !important;
+  }
+  .mr#{$i} {
+    margin-right: $i * $padding-base !important;
+  }
+  .ml#{$i} {
+    margin-left: $i * $padding-base !important;
+  }
+  .mt#{$i} {
+    margin-top: $i * $padding-base !important;
+  }
+  .mb#{$i} {
+    margin-bottom: $i * $padding-base !important;
+  }
+}
+
+.text-light {
+  color: #ffffff;
+}
