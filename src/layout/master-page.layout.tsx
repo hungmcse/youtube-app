@@ -46,7 +46,7 @@ export const MasterPageLayout = observer((props: IProps): React.ReactElement<IPr
 										<Input placeholder="Username"/>
 									</Form.Item>
 									<Form.Item name="password">
-										<Input placeholder="Password"/>
+										<Input type={'password'} placeholder="Password"/>
 									</Form.Item>
 									<Form.Item>
 										<Button htmlType='submit' type='primary'>Login/Register</Button>

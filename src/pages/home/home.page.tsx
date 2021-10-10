@@ -4,35 +4,27 @@ import styles from './home.module.scss'
 import dislike from '../../assets/icon/dislike.svg'
 import like from '../../assets/icon/like.svg'
 import {observer} from 'mobx-react';
-import {VideoListDto, VideoListResponseDto} from '../../shared/dto/video/video-list.dto';
-import {PagingRequestDto} from '../../shared/dto/paging.dto';
+import {VideoListResponseDto} from '../../shared/dto/video/video-list.dto';
 import {ResponseDTO} from '../../shared/dto/base.dto';
-import {IVideo, VIDEO_EMBED_URL, VIDEO_SOURCE, YOUTUBE_PART} from '../../shared/model/video.model';
+import {IVideo, VIDEO_EMBED_URL, VIDEO_SOURCE} from '../../shared/model/video.model';
 import {extractYoutubeVideoId} from '../../util/string.util';
-import {YoutubeVideoDto, YoutubeVideoResponseDto} from '../../shared/dto/video/video-source.dto';
-import {GOOGLE_API_KEY, YOUTUBE_API} from '../../environment/environment';
+import {YoutubeVideoResponseDto} from '../../shared/dto/video/video-source.dto';
 import {Container} from 'typedi';
-import {HttpService} from '../../services/http.service';
+import {VideoService} from '../../services/video.service';
 
 interface IProps {
 	children: React.ReactNode
 }
-// TODO: Use infinite load with paging API
-const defaultPageSize = 100;
 
 const HomePage = observer((): React.ReactElement<IProps> => {
-	const httpService = Container.get(HttpService);
+	const videoService = Container.get(VideoService);
 	const [videos, setVideos] = useState<IVideo[]>([]);
 	useEffect(() => {
-		httpService.request(new VideoListDto(new PagingRequestDto(1, defaultPageSize))).then((response: ResponseDTO<VideoListResponseDto>) => {
+		videoService.getVideos().then((response: ResponseDTO<VideoListResponseDto>) => {
 			const videoDetailPromises = response.data.list.map((item: Pick<IVideo, 'author' | 'url'>) => {
 				const id = extractYoutubeVideoId(item.url);
 				if (id) {
-					return httpService.requestExternal(new YoutubeVideoDto({
-						id,
-						key: GOOGLE_API_KEY,
-						part: [YOUTUBE_PART.SNIPPET, YOUTUBE_PART.STATISTIC]
-					}), YOUTUBE_API);
+					return videoService.getYoutubeVideoDetail(id);
 				}
 			})
 

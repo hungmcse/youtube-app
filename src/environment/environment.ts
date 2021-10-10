@@ -1,3 +1,3 @@
-export const API_HOST = 'https://localhost:9000';
-export const GOOGLE_API_KEY = 'AIzaSyC65i39G7B3lsKt-12H1IqsW9RVgDiEyVI';
-export const YOUTUBE_API = 'https://www.googleapis.com/youtube/v3';
+export const API_HOST = process.env.REACT_APP_API_HOST || '';
+export const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY || '';
+export const YOUTUBE_API = process.env.REACT_APP_YOUTUBE_API || '';
