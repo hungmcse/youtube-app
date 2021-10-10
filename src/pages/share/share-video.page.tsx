@@ -13,8 +13,6 @@ const ShareVideoPage = () => {
 	const httpService = Container.get(HttpService);
 	const history = useHistory();
 	const submit = async () => {
-		console.log(form.getFieldsValue());
-		console.log(VIDEO_SOURCE.YOUTUBE);
 		await httpService.request(new VideoCreateDto(new VideoBodyDto({url: form.getFieldsValue().url, source: VIDEO_SOURCE.YOUTUBE})));
 		history.push(PageRoute.Home);
 	}

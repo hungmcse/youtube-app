@@ -7,7 +7,6 @@ export class VideoBodyDto {
 	public source: VIDEO_SOURCE;
 
 	constructor(payload: {url: string, source: VIDEO_SOURCE}) {
-		console.log(payload);
 		this.url = payload.url;
 		this.source = payload.source;
 	}
