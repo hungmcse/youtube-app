@@ -2,26 +2,27 @@ import React, {Suspense} from 'react';
 import {Spin} from 'antd';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import {PageRoute} from './constants/route';
-import AuthRouter from './components/auth/AuthRouter';
+import AuthRoute from './components/auth/auth-route';
 import {MasterPageLayout} from './layout/master-page.layout';
 
 const App = () => {
 	return (
-		<MasterPageLayout>
-			<Suspense fallback={<Spin/>}>
-				<BrowserRouter>
+		<BrowserRouter>
+			<MasterPageLayout>
+				<Suspense fallback={<Spin/>}>
 					<Switch>
+						<AuthRoute>
+							<Route path={PageRoute.Share} exact={true}
+								   component={React.lazy(() => import('./pages/share/share.page'))}/>
+						</AuthRoute>
 						<Route path={PageRoute.Home} exact={true}
 							   component={React.lazy(() => import('./pages/home/home.page'))}/>
-						<AuthRouter>
-							<Route path={PageRoute.Share}
-								   component={React.lazy(() => import('./pages/share/share.page'))}/>
-						</AuthRouter>
 						<Route path="*" component={() => <Redirect to={PageRoute.Home}/>}/>
 					</Switch>
-				</BrowserRouter>
-			</Suspense>
-		</MasterPageLayout>
+				</Suspense>
+			</MasterPageLayout>
+		</BrowserRouter>
+
 	);
 };
 
