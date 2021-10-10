@@ -16,7 +16,7 @@
 }
 
 .container {
-  max-height: calc(100vh - (64px + (#{$padding-base} * 4)));
+  max-height: calc(100vh - (64px + (#{$padding-base} * 10)));
   overflow-y: auto;
   margin-left: 10rem;
   margin-right: 10rem;

@@ -11,12 +11,12 @@ const App = () => {
 			<MasterPageLayout>
 				<Suspense fallback={<Spin/>}>
 					<Switch>
-						<AuthRoute>
-							<Route path={PageRoute.Share} exact={true}
-								   component={React.lazy(() => import('./pages/share/share.page'))}/>
-						</AuthRoute>
 						<Route path={PageRoute.Home} exact={true}
 							   component={React.lazy(() => import('./pages/home/home.page'))}/>
+						<AuthRoute>
+							<Route path={PageRoute.Share} exact={true}
+								   component={React.lazy(() => import('./pages/share/share-video.page'))}/>
+						</AuthRoute>
 						<Route path="*" component={() => <Redirect to={PageRoute.Home}/>}/>
 					</Switch>
 				</Suspense>

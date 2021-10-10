@@ -17,8 +17,8 @@ import {HttpService} from '../../services/http.service';
 interface IProps {
 	children: React.ReactNode
 }
+// TODO: Use infinite load with paging API
 const defaultPageSize = 100;
-
 
 const HomePage = observer((): React.ReactElement<IProps> => {
 	const httpService = Container.get(HttpService);

@@ -16,4 +16,9 @@ export class UserService {
 			this.user = payload
 		});
 	}
+
+	public logout = () =>{
+		this.httpService.clearToken();
+		this.user = undefined;
+	}
 }

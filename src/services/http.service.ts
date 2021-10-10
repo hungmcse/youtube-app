@@ -3,7 +3,6 @@ import {Service} from 'typedi';
 import {DTO, ResponseDTO} from '../shared/dto/base.dto';
 import {API_HOST} from '../environment/environment';
 
-// import jwtDecode from 'jwt-decode';
 
 @Service()
 export class HttpService {
@@ -11,7 +10,7 @@ export class HttpService {
 
 	constructor() {
 		axios.interceptors.response.use((response) => {
-			if (response.data && response.data.data.token) {
+			if (response && response.data && response.data.data && response.data.data.token) {
 				this.token = response.data.data.token;
 			}
 			return response;
@@ -20,6 +19,10 @@ export class HttpService {
 
 	public get tokenInfo(): any {
 		return this.token;
+	}
+
+	public clearToken(): any {
+		this.token = undefined;
 	}
 
 	public request = async(
