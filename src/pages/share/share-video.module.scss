@@ -1,0 +1,15 @@
+@import '../../style-guide';
+
+.box {
+  border: 1px solid #000;
+}
+
+.boxLegend {
+  @extend .ml4;
+  width: auto;
+  font-size: 1rem;
+}
+
+.container {
+  height: calc(50vh - (64px + (#{$padding-base} * 4)));
+}
