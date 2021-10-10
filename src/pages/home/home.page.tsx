@@ -27,7 +27,6 @@ const HomePage = observer((): React.ReactElement<IProps> => {
 					return videoService.getYoutubeVideoDetail(id);
 				}
 			})
-
 			Promise.all(videoDetailPromises.filter((item) => item != undefined) as Array<Promise<YoutubeVideoResponseDto>>).then((rs: YoutubeVideoResponseDto[]) => {
 				setVideos(rs.map((detail) => {
 					const video = response.data.list.find((item: Pick<IVideo, 'author' | 'url' | 'source'>) => extractYoutubeVideoId(item.url) === detail.items[0].id);
