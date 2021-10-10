@@ -1,25 +1,19 @@
-import { DTO, ResponseDTO } from './base.dto';
-import { METHOD } from '../../constants/http';
+import {DTO, METHOD} from './base.dto';
 
-export interface ILoginQuery {
+export interface ILoginBody {
 	username: string,
 	password: string,
 }
 
-export class LoginResponse extends ResponseDTO {
-	constructor () {
-		super();
-	}
+export class LoginResponseDto {
 }
 
-export class LoginDTO extends DTO {
-	public url = '/login';
+export class LoginDto extends DTO {
+	public url = 'api/login';
 	public method = METHOD.POST;
-	body: undefined;
-	public readonly response!: LoginResponse;
-	public query: ILoginQuery;
-	constructor(query: ILoginQuery) {
+	public readonly response!: LoginResponseDto;
+	public query: undefined;
+	constructor(public body: ILoginBody) {
 		super();
-		this.query= query
 	}
 }
