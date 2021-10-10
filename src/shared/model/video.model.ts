@@ -4,6 +4,8 @@ export interface IVideo {
 	description: string,
 	title: string,
 	source: VIDEO_SOURCE,
+	like: string,
+	dislike: string
 }
 
 export enum VIDEO_SOURCE {

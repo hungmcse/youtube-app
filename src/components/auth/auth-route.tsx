@@ -14,7 +14,6 @@ const AuthRoute = ({ children }: IAuthRouter) => {
 	if (!userService.user) {
 		return <Redirect to={PageRoute.Home} />;
 	}
-	console.log(children);
 	return children;
 }
 

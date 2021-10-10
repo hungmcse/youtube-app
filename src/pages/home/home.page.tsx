@@ -45,6 +45,8 @@ const HomePage = observer((): React.ReactElement<IProps> => {
 						description: detail.items[0].snippet.description,
 						author: video!.author,
 						source: video!.source,
+						like: detail.items[0].statistics.likeCount,
+						dislike: detail.items[0].statistics.dislikeCount
 					}
 				}))
 			})
@@ -64,8 +66,8 @@ const HomePage = observer((): React.ReactElement<IProps> => {
 						<div className={styles.videoTitle}>{item.title}</div>
 						<div>Share by: {item.author}</div>
 						<div>
-							<span><img className={styles.feedbackIcon} src={like}/>20</span>
-							<span className={styles.ml4}><img className={styles.feedbackIcon} src={dislike}/>10</span>
+							<span><img className={styles.feedbackIcon} src={like}/>{item.like}</span>
+							<span className={styles.ml4}><img className={styles.feedbackIcon} src={dislike}/>{item.dislike}</span>
 						</div>
 						<div>Description:</div>
 						<div>{item.description}</div>
